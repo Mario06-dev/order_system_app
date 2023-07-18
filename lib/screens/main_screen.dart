@@ -6,6 +6,8 @@ import 'package:order_system_app/screens/orders_screen.dart';
 import 'package:order_system_app/screens/settings_screen.dart';
 import 'package:order_system_app/screens/statistics_screen.dart';
 
+import 'add_new_order_screen.dart';
+
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
 
@@ -32,7 +34,12 @@ class _MainScreenState extends State<MainScreen> {
         child: const Icon(
           Icons.add,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AddNewOrderScreen()),
+          );
+        },
       ),
       body: SafeArea(
         child: Row(
