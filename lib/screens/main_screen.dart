@@ -1,6 +1,7 @@
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:order_system_app/constants/colors.dart';
 import 'package:order_system_app/screens/admin_screen.dart';
 import 'package:order_system_app/screens/orders_screen.dart';
 import 'package:order_system_app/screens/settings_screen.dart';
@@ -31,6 +32,7 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton(
+        backgroundColor: primaryColor,
         child: const Icon(
           Icons.add,
         ),
