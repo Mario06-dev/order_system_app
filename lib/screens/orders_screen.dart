@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:order_system_app/data/order_data.dart';
+import 'package:order_system_app/models/order_model.dart';
+import 'package:order_system_app/models/salad_model.dart';
 import 'package:order_system_app/widgets/order_preview_card.dart';
+import 'package:provider/provider.dart';
 
 import '../models/pizza_model.dart';
 
@@ -8,6 +12,8 @@ class OrdersScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    OrderData orderData = Provider.of<OrderData>(context);
+
     return Padding(
       padding: const EdgeInsets.all(20.0),
       child: Column(
@@ -25,7 +31,7 @@ class OrdersScreen extends StatelessWidget {
           ),
           Expanded(
             child: GridView.builder(
-              itemCount: 7,
+              itemCount: orderData.activeOrdersCount,
               physics: const NeverScrollableScrollPhysics(),
               gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                 childAspectRatio: (100 / 80),
@@ -35,18 +41,14 @@ class OrdersScreen extends StatelessWidget {
               ),
               itemBuilder: (context, index) {
                 return OrderPreviewCard(
-                  table: "5",
-                  numberOfPizzas: const {'baby': 2, 'normal': 2},
-                  orderId: 'jshakjhsajk',
-                  orderTime: DateTime.parse('2023-07-10 20:18:04Z'),
-                  pizzasList: [
-                    Pizza(name: "Margarita", toppings: ["salsa, mozzarella"]),
-                    Pizza(
-                      name: "Margarita",
-                      toppings: ["salsa, mozzarella"],
-                      isBabySize: true,
-                    ),
-                  ],
+                  table: orderData.orders[index].table,
+                  numberOfPizzas: {'baby': 2, 'normal': 3},
+                  //numberOfPizzas: orderData
+                  //  .getNumberOfPizzas(orderData.orders[index].orderId),
+                  orderId: orderData.orders[index].orderId,
+                  orderTime: orderData.orders[index].orderTime,
+                  saladsList: orderData.orders[index].saladsList,
+                  pizzasList: orderData.orders[index].pizzasList,
                 );
               },
             ),

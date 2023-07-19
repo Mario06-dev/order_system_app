@@ -2,6 +2,7 @@ import 'dart:collection';
 import 'package:flutter/foundation.dart';
 import 'package:order_system_app/models/order_model.dart';
 import 'package:order_system_app/models/pizza_model.dart';
+import 'package:order_system_app/models/salad_model.dart';
 
 class OrderData extends ChangeNotifier {
   // contains list of all currently active orders
@@ -10,6 +11,12 @@ class OrderData extends ChangeNotifier {
       orderId: "fskjsflj2",
       table: "2",
       orderTime: DateTime.parse('2023-07-10 20:18:04Z'),
+      saladsList: [
+        Salad(
+          name: 'Katarina',
+          toppings: ['mozzarella, svjezi sir, masline, kaperi'],
+        ),
+      ],
       pizzasList: [
         Pizza(name: "Margarita", toppings: ["salsa, mozzarella"]),
         Pizza(
@@ -23,6 +30,12 @@ class OrderData extends ChangeNotifier {
       orderId: "salksdofi",
       table: "5",
       orderTime: DateTime.parse('2023-07-10 20:20:04Z'),
+      saladsList: [
+        Salad(
+          name: 'Delicata',
+          toppings: ['šunka, svjezi sir, kukuruz, kaperi'],
+        ),
+      ],
       pizzasList: [
         Pizza(
           name: "Capriciosa",
@@ -43,6 +56,7 @@ class OrderData extends ChangeNotifier {
       orderId: "dsklmoifajr",
       table: "V",
       orderTime: DateTime.parse('2023-07-10 20:20:04Z'),
+      saladsList: [],
       pizzasList: [
         Pizza(name: "Učka", toppings: ["salsa, mozzarella, luk, pomidori"])
       ],
@@ -50,7 +64,7 @@ class OrderData extends ChangeNotifier {
   ];
 
   // returns all active orders
-  UnmodifiableListView<Order> get tasks {
+  UnmodifiableListView<Order> get orders {
     return UnmodifiableListView(_activeOrders);
   }
 

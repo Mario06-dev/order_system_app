@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:order_system_app/models/pizza_model.dart';
+import 'package:order_system_app/models/salad_model.dart';
 
 import '../constants/colors.dart';
 
@@ -13,6 +14,7 @@ class OrderPreviewCard extends StatelessWidget {
     required this.orderTime,
     required this.orderId,
     required this.pizzasList,
+    required this.saladsList,
   });
 
   final String table;
@@ -20,6 +22,7 @@ class OrderPreviewCard extends StatelessWidget {
   final DateTime orderTime;
   final String orderId;
   final List<Pizza> pizzasList;
+  final List<Salad> saladsList;
 
   @override
   Widget build(BuildContext context) {
@@ -63,6 +66,21 @@ class OrderPreviewCard extends StatelessWidget {
               ],
             ),
             Padding(
+              padding: const EdgeInsets.only(top: 8),
+              child: Row(
+                children: [
+                  SvgPicture.asset(
+                    "assets/icons/salad.svg",
+                    height: 15,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8),
+                    child: Text(saladsList.length.toString()),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
               padding: const EdgeInsets.only(top: 15),
               child: Row(
                 children: [
@@ -74,21 +92,6 @@ class OrderPreviewCard extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 8),
                     child: Text(
                         "${numberOfPizzas['normal'] + numberOfPizzas['baby']}: ${numberOfPizzas['normal']}N i ${numberOfPizzas['baby']}B"),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    "assets/icons/salad.svg",
-                    height: 15,
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 8),
-                    child: Text("1"),
                   ),
                 ],
               ),
