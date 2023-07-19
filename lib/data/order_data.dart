@@ -78,12 +78,12 @@ class OrderData extends ChangeNotifier {
     int numOfBaby = 0;
     int numOfNormal = 0;
 
-    for (var i = 0; i <= _activeOrders.length; i++) {
+    for (var i = 0; i < _activeOrders.length; i++) {
       // order with id matched
       if (_activeOrders[i].orderId == orderId) {
         // loop through all pizzas in order pizzaList
         for (var pizzaIndex = 0;
-            pizzaIndex <= _activeOrders[i].pizzasList.length;
+            pizzaIndex < _activeOrders[i].pizzasList.length;
             pizzaIndex++) {
           if (_activeOrders[i].pizzasList[pizzaIndex].isBabySize) {
             numOfBaby++;

@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:order_system_app/data/order_data.dart';
-import 'package:order_system_app/models/order_model.dart';
-import 'package:order_system_app/models/salad_model.dart';
 import 'package:order_system_app/widgets/order_preview_card.dart';
 import 'package:provider/provider.dart';
-
-import '../models/pizza_model.dart';
 
 class OrdersScreen extends StatelessWidget {
   const OrdersScreen({super.key});
@@ -42,9 +38,8 @@ class OrdersScreen extends StatelessWidget {
               itemBuilder: (context, index) {
                 return OrderPreviewCard(
                   table: orderData.orders[index].table,
-                  numberOfPizzas: {'baby': 2, 'normal': 3},
-                  //numberOfPizzas: orderData
-                  //  .getNumberOfPizzas(orderData.orders[index].orderId),
+                  numberOfPizzas: orderData
+                      .getNumberOfPizzas(orderData.orders[index].orderId),
                   orderId: orderData.orders[index].orderId,
                   orderTime: orderData.orders[index].orderTime,
                   saladsList: orderData.orders[index].saladsList,

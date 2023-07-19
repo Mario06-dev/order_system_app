@@ -65,36 +65,23 @@ class OrderPreviewCard extends StatelessWidget {
                 ),
               ],
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 8),
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    "assets/icons/salad.svg",
-                    height: 15,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Text(saladsList.length.toString()),
-                  ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 15),
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    "assets/icons/pizza.svg",
-                    height: 15,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 8),
-                    child: Text(
-                        "${numberOfPizzas['normal'] + numberOfPizzas['baby']}: ${numberOfPizzas['normal']}N i ${numberOfPizzas['baby']}B"),
-                  ),
-                ],
-              ),
+            const SizedBox(height: 20),
+            saladsList.isNotEmpty
+                ? ItemLine(saladsNum: saladsList.length)
+                : const SizedBox(),
+            const SizedBox(height: 10),
+            Row(
+              children: [
+                SvgPicture.asset(
+                  "assets/icons/pizza.svg",
+                  height: 15,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(left: 8),
+                  child: Text(
+                      "${numberOfPizzas['normal'] + numberOfPizzas['baby']}: ${numberOfPizzas['normal']}N i ${numberOfPizzas['baby']}B"),
+                ),
+              ],
             ),
             const Spacer(),
             Padding(
@@ -109,6 +96,31 @@ class OrderPreviewCard extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class ItemLine extends StatelessWidget {
+  const ItemLine({
+    super.key,
+    required this.saladsNum,
+  });
+
+  final int saladsNum;
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        SvgPicture.asset(
+          "assets/icons/salad.svg",
+          height: 15,
+        ),
+        Padding(
+          padding: const EdgeInsets.only(left: 8),
+          child: Text(saladsNum.toString()),
+        ),
+      ],
     );
   }
 }
