@@ -27,6 +27,22 @@ class OrderData extends ChangeNotifier {
       ],
     ),
     Order(
+      orderId: "fkdslfajs",
+      table: "2",
+      orderTime: DateTime.parse('2023-07-10 19:23:04Z'),
+      saladsList: [
+        Salad(
+          name: 'Katarina',
+          toppings: ['mozzarella, svjezi sir, masline, kaperi'],
+        ),
+        Salad(
+          name: 'Katarina',
+          toppings: ['mozzarella, svjezi sir, masline, kaperi'],
+        ),
+      ],
+      pizzasList: [],
+    ),
+    Order(
       orderId: "salksdofi",
       table: "5",
       orderTime: DateTime.parse('2023-07-10 20:20:04Z'),

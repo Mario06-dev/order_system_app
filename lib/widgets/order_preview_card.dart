@@ -67,22 +67,19 @@ class OrderPreviewCard extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             saladsList.isNotEmpty
-                ? ItemLine(saladsNum: saladsList.length)
+                ? ItemLine(
+                    lineText: saladsList.length.toString(),
+                    lineIconSrc: 'assets/icons/salad.svg',
+                  )
                 : const SizedBox(),
             const SizedBox(height: 10),
-            Row(
-              children: [
-                SvgPicture.asset(
-                  "assets/icons/pizza.svg",
-                  height: 15,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: Text(
-                      "${numberOfPizzas['normal'] + numberOfPizzas['baby']}: ${numberOfPizzas['normal']}N i ${numberOfPizzas['baby']}B"),
-                ),
-              ],
-            ),
+            pizzasList.isNotEmpty
+                ? ItemLine(
+                    lineText:
+                        '${numberOfPizzas['normal'] + numberOfPizzas['baby']}: ${numberOfPizzas['normal']}N i ${numberOfPizzas['baby']}B',
+                    lineIconSrc: 'assets/icons/pizza.svg',
+                  )
+                : const SizedBox(),
             const Spacer(),
             Padding(
               padding: const EdgeInsets.only(top: 8),
@@ -103,22 +100,24 @@ class OrderPreviewCard extends StatelessWidget {
 class ItemLine extends StatelessWidget {
   const ItemLine({
     super.key,
-    required this.saladsNum,
+    required this.lineText,
+    required this.lineIconSrc,
   });
 
-  final int saladsNum;
+  final String lineText;
+  final String lineIconSrc;
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
         SvgPicture.asset(
-          "assets/icons/salad.svg",
+          lineIconSrc,
           height: 15,
         ),
         Padding(
           padding: const EdgeInsets.only(left: 8),
-          child: Text(saladsNum.toString()),
+          child: Text(lineText),
         ),
       ],
     );
